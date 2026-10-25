@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SQL Injection Lab</title>
+</head>
+<body>
+  <h1>SQL Injection — Authentication Bypass</h1>
+  <p>Local educational security lab</p>
+
+  <form action="/login-safe" method="POST">
+    <label for="username">Username</label>
+    <input id="username" name="username" required>
+
+    <br><br>
+
+    <label for="password">Password</label>
+    <input id="password" name="password"
+           type="password" required>
+
+    <br><br>
+
+    <button type="submit">Log in</button>
+  </form>
+
+  <p>Use the dummy account: Pal / PalTest@123</p>
+</body>
+</html>
