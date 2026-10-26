@@ -3,28 +3,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SQL Injection Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Injection</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: white;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    .login {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 25px 0;
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 95%;
+      padding: 8px;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .safe {
+      border-left: 4px solid green;
+    }
+
+    .vulnerable {
+      border-left: 4px solid #c33;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>SQL Injection — Authentication Bypass</h1>
-  <p>Local educational security lab</p>
+  <h1>SQL Injection</h1>
+  <hr>
 
-  <form action="/login-safe" method="POST">
-    <label for="username">Username</label>
-    <input id="username" name="username" required>
+  <!-- Secure Login -->
+  <div class="login safe">
+    <h2>Secure Login</h2>
 
-    <br><br>
+    <form action="/login-safe" method="POST">
+      <label for="safe-user">Username</label>
+      <input id="safe-user" name="username" required>
 
-    <label for="password">Password</label>
-    <input id="password" name="password"
-           type="password" required>
+      <label for="safe-pass">Password</label>
+      <input id="safe-pass" name="password" type="password" required>
 
-    <br><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
-    <button type="submit">Log in</button>
+  <!-- Authentication Bypass -->
+  <div class="login vulnerable">
+    <h2>Authentication Bypass</h2>
+
+    <form action="/login-vulnerable" method="POST">
+      <label for="vuln-user">Username</label>
+      <input id="vuln-user" name="username" required>
+
+      <label for="vuln-pass">Password</label>
+      <input id="vuln-pass" name="password" type="password" required>
+
+      <button type="submit">Test Login</button>
+    </form>
+  </div>
+
+  <!-- UNION-Based SQL Injection -->
+  <div class="login vulnerable">
+    <h2>UNION-Based SQL Injection</h2>
+
+    <form action="/union-vulnerable" method="POST">
+      <label for="union-user">Username</label>
+      <input id="union-user" name="username" required>
+
+      <button type="submit">Test UNION Query</button>
+    </form>
+  </div>
+
+  
+<div class="login safe">
+  <h2>Secure UNION Search</h2>
+
+  <form action="/union-safe" method="POST">
+    <label for="union-safe-user">Username</label>
+    <input
+      id="union-safe-user"
+      name="username"
+      required
+    >
+
+    <button type="submit">Test Secure Search</button>
   </form>
+</div>
 
-  <p>Use the dummy account: Pal / PalTest@123</p>
+
 </body>
 </html>
